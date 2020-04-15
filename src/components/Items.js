@@ -11,55 +11,54 @@ class Items extends React.Component {
     return (
       <div>
         <img
-          id='0'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '100' }}
           onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='1'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '200' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='2'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '300' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='3'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '400' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='4'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '500' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='5'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '600' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='6'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '700' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='7'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '800' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='8'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '900' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
         <img
-          id='9'
           src={potion}
           styles={{ position: 'relative', top: '100', left: '1000' }}
+          onClick={this.props.pickupItem.bind(this, { potion })}
         />
       </div>
 

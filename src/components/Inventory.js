@@ -1,5 +1,6 @@
 import React from 'react'
-import Test from '../.././images/Bag.png'
+import InventorySlots from './InventorySlots.js'
+
 
 class Inventory extends React.Component {
   constructor(props, context) {
@@ -13,14 +14,10 @@ class Inventory extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="inventoryInner">
+      <div className="shadow">
+        <div className="inventory">
           <span className="close" onClick={this.handleClick}>&times;</span>
-          <div
-            className='inventorySlot'
-            id='slot1'
-            style={{ backgroundImage: "url(" + this.props.inventory[0] + ")" }}>
-          </div>
+          <InventorySlots inventory={this.props.inventory} />
         </div>
       </div>
     )

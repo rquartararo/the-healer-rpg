@@ -30,21 +30,23 @@ body {
   position: absolute;
 }
 
-.inventoryInner {  
+.inventory {
   position: absolute;
   top: 40%;
   left: 40%; 
   width: 330px;
-  height: 150px;  
+  height: 130px;  
   background-color:#bfb777;
+  z-index: 1; 
+}
+
+.inventoryInner {  
   display: grid;
   grid-template-columns: repeat(5, 50px);
   grid-template-rows: repeat(2, 50px);
   column-gap: 10px;
   row-gap: 10px;
   padding: 10px;
-  
-  
 }
 
 .inventorySlot {
@@ -56,4 +58,14 @@ body {
 
 .close {
   float: left;
+  padding-left: 5px;
+}
+
+.shadow {
+  position: absolute; 
+  top: 0; left: 0;
+  background-color: rgba(0,0,0, 0.5);  
+  width: 100%;  
+  height: 100%; 
+  z-index: 1;
 }
