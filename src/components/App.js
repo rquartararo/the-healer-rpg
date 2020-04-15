@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-import Tiles from './Tiles.js'
+import Map from './Map.js'
 import Inventory from './Inventory.js'
 import sprite1 from '../.././images/sprite-1.png'
 import sprite2 from '../.././images/sprite-2.png'
@@ -21,6 +21,7 @@ class App extends React.Component {
     };
     this.handleKey = this.handleKey.bind(this);
     this.togglePopup = this.togglePopup.bind(this);
+    this.pickupItem = this.pickupItem.bind(this);
   }
 
   componentDidMount() {
@@ -61,23 +62,35 @@ class App extends React.Component {
 
   togglePopup() {
     this.setState({
-      showInventory: true
+      showInventory: !this.state.showInventory
     });
+  }
+
+  pickupItem(src) {
+    this.setState({
+      inventory: [...this.state.inventory, src]
+    })
+
   }
 
   render() {
     return (
       <div >
+        {/* inventory button */}
         <div className="btn" onClick={this.togglePopup}>
           <img src={bag} />
         </div>
-        {this.state.showInventory ? <Inventory toggle={this.togglePop} /> : null}
+        {this.state.showInventory ? <Inventory toggle={this.togglePopup} inventory={this.state.inventory} /> : null}
+        {/* settings buttons */}
+
+        {/* character sprite */}
         <img
           id='sprite'
           src={this.state.spriteSrc}
           style={{ top: this.state.spritePositionTop, left: this.state.spritePositionLeft }}
         />
-
+        {/* game map contaning items and NPC's */}
+        <Map pickupItem={this.pickupItem} />
       </div>
     )
   }

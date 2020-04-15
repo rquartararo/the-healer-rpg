@@ -1,7 +1,7 @@
 import React from 'react';
 import Items from './Items.js'
 
-class Tiles extends React.Component {
+class Map extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
@@ -13,13 +13,13 @@ class Tiles extends React.Component {
     }
     return (
       <div>
-        <div className="tilemap">
+        {/* <div className="tilemap">
           {allTiles}
-        </div>
-        <Items />
+        </div> */}
+        <Items pickupItem={this.props.pickupItem} />
       </div>
     )
   }
 }
 
-export default Tiles;
+export default Map;
