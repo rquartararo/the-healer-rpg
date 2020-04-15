@@ -1,4 +1,5 @@
 import React from 'react';
+import Items from './Items.js'
 
 class Tiles extends React.Component {
   constructor(props, context) {
@@ -11,8 +12,11 @@ class Tiles extends React.Component {
         key={`tile${i}`} ></div>)
     }
     return (
-      <div className="tilemap">
-        {allTiles}
+      <div>
+        <div className="tilemap">
+          {allTiles}
+        </div>
+        <Items />
       </div>
     )
   }
