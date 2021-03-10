@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-//components 
+//components
 import Map from './Map.js'
 import Inventory from './Inventory.js'
 import ItemPopup from './ItemPopup.js'
@@ -29,11 +29,22 @@ import blank from '../.././images/blank.png'
 
 class App extends React.Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
       showInventory: false,
       inventory: [],
-      itemsSrc: [`${potion}`, `${book}`, `${crystal}`, `${sword}`, `${armor}`, `${mushroom}`, `${rune}`, `${staff}`, `${sapphire}`, `${hat}`],
+      itemsSrc: [
+        `${potion}`,
+        `${book}`,
+        `${crystal}`,
+        `${sword}`,
+        `${armor}`,
+        `${mushroom}`,
+        `${rune}`,
+        `${staff}`,
+        `${sapphire}`,
+        `${hat}`,
+      ],
       spritePositionTop: 340,
       spritePositionLeft: 0,
       spriteSrc: `${sprite3}`,
@@ -41,71 +52,73 @@ class App extends React.Component {
       showItemPopup: false,
       lastItemClicked: '',
       showSettings: false,
-    };
-    this.handleKey = this.handleKey.bind(this);
-    this.togglePopup = this.togglePopup.bind(this);
-    this.pickupItem = this.pickupItem.bind(this);
-    this.itemPopup = this.itemPopup.bind(this);
-    this.toggleSettings = this.toggleSettings.bind(this);
+    }
+    this.handleKey = this.handleKey.bind(this)
+    this.togglePopup = this.togglePopup.bind(this)
+    this.pickupItem = this.pickupItem.bind(this)
+    this.itemPopup = this.itemPopup.bind(this)
+    this.toggleSettings = this.toggleSettings.bind(this)
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKey);
-    window.focus();
+    window.addEventListener('keydown', this.handleKey)
+    window.focus()
   }
 
   handleKey(event) {
-
     if (event.keyCode === 39) {
       this.setState({
         spritePositionLeft: this.state.spritePositionLeft + 20,
         lastKeyPress: event.keyCode,
-        spriteSrc: `${sprite3}`
+        spriteSrc: `${sprite3}`,
       })
     }
     if (event.keyCode === 37) {
       this.setState({
         spritePositionLeft: this.state.spritePositionLeft - 20,
         lastKeyPress: event.keyCode,
-        spriteSrc: `${sprite4}`
+        spriteSrc: `${sprite4}`,
       })
     }
     if (event.keyCode === 38) {
       this.setState({
         spritePositionTop: this.state.spritePositionTop - 20,
         lastKeyPress: event.keyCode,
-        spriteSrc: `${sprite2}`
+        spriteSrc: `${sprite2}`,
       })
     }
     if (event.keyCode === 40) {
       this.setState({
         spritePositionTop: this.state.spritePositionTop + 20,
         lastKeyPress: event.keyCode,
-        spriteSrc: `${sprite1}`
+        spriteSrc: `${sprite1}`,
       })
     }
     if (event.keyCode === 32) {
-      this.setState(prevState => ({
-        spritePositionTop: this.state.spritePositionTop - 20,
-      }), () => {
-        setTimeout(() => {
-          this.setState(prevState => ({
-            spritePositionTop: this.state.spritePositionTop + 20,
-          }));
-        }, 500);
-      });
+      this.setState(
+        (prevState) => ({
+          spritePositionTop: this.state.spritePositionTop - 20,
+        }),
+        () => {
+          setTimeout(() => {
+            this.setState((prevState) => ({
+              spritePositionTop: this.state.spritePositionTop + 20,
+            }))
+          }, 500)
+        }
+      )
     }
     if (event.keyCode === 13) {
       this.setState({
-        spriteSrc: `${spriteSit}`
+        spriteSrc: `${spriteSit}`,
       })
     }
   }
 
   togglePopup() {
     this.setState({
-      showInventory: !this.state.showInventory
-    });
+      showInventory: !this.state.showInventory,
+    })
   }
 
   pickupItem(src, name, id) {
@@ -115,48 +128,59 @@ class App extends React.Component {
     this.setState({
       inventory: [...this.state.inventory, src],
       lastItemClicked: name,
-      itemsSrc: newItems
+      itemsSrc: newItems,
     })
     this.itemPopup()
   }
 
   itemPopup() {
     this.setState({
-      showItemPopup: !this.state.showItemPopup
+      showItemPopup: !this.state.showItemPopup,
     })
   }
 
   toggleSettings() {
     this.setState({
-      showSettings: !this.state.showSettings
+      showSettings: !this.state.showSettings,
     })
   }
 
   render() {
     return (
-      <div >
+      <div>
         {/* inventory button */}
-        <div className="btn" onClick={this.togglePopup}>
+        <div className="inventoryBtn" onClick={this.togglePopup}>
           <img src={bag} />
         </div>
         <div className="settingsBtn" onClick={this.toggleSettings}>
           <img src={gear} />
         </div>
-        {this.state.showInventory ? <Inventory
-          toggle={this.togglePopup}
-          inventory={this.state.inventory} /> : null}
-        {this.state.showItemPopup ? <ItemPopup
-          showItemPopup={this.itemPopup}
-          lastItemClicked={this.state.lastItemClicked} /> : null}
-        {this.state.showSettings ? <Settings
-          toggleSettings={this.toggleSettings} /> : null}
+
+        {this.state.showInventory ? (
+          <Inventory
+            toggle={this.togglePopup}
+            inventory={this.state.inventory}
+          />
+        ) : null}
+        {this.state.showItemPopup ? (
+          <ItemPopup
+            showItemPopup={this.itemPopup}
+            lastItemClicked={this.state.lastItemClicked}
+          />
+        ) : null}
+        {this.state.showSettings ? (
+          <Settings toggleSettings={this.toggleSettings} />
+        ) : null}
         {/* settings buttons */}
 
         {/* character sprite */}
         <img
-          id='sprite'
+          id="sprite"
           src={this.state.spriteSrc}
-          style={{ top: this.state.spritePositionTop, left: this.state.spritePositionLeft }}
+          style={{
+            top: this.state.spritePositionTop,
+            left: this.state.spritePositionLeft,
+          }}
         />
         {/* game map contaning items and NPC's */}
         <Map pickupItem={this.pickupItem} itemsSrc={this.state.itemsSrc} />
