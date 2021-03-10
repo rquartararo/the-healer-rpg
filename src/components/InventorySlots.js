@@ -14,7 +14,9 @@ class InventorySlots extends React.Component {
         <div
           className='inventorySlot'
           key={`slot${i}`}
-          style={{ backgroundImage: this.props.inventory[i] ? "url(" + this.props.inventory[i][Object.keys(this.props.inventory[i])[0]] + ")" : "url('')" }}
+          style={{
+            backgroundImage: this.props.inventory[i] ? "url(" + this.props.inventory[i][Object.keys(this.props.inventory[i])[0]] + ")" : "url('')"
+          }}
         >
         </div>
       )

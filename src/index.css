@@ -47,6 +47,11 @@ body {
   z-index: 1; 
 }
 
+.inventorySlot {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .itemPopup {
   position: absolute;
   top: 40%;
